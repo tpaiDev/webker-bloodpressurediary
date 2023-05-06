@@ -1,1 +1,46 @@
-<p>bpmeasurement-add-edit works!</p>
+<div mat-dialog-title>
+    <h1><span class="material-symbols-outlined">medication</span> Új vérnyomás érték rögzítése</h1>
+</div>
+<form [formGroup]="bpmForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Dátum</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="date" required>
+                <mat-hint>HÓNAP/NAP/ÉV</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Időpont (napszak)</mat-label>
+                <mat-select formControlName="potd" required>
+                <mat-option *ngFor="let val of potd" [value]="val">{{val}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Szisztolés (SYSTOLIC)</mat-label>
+                <input matInput type="number" formControlName="systol" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Diasztolés (DIASTOLIC)</mat-label>
+                <input matInput type="number" formControlName="diastol" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Pulzusszám (BPM)</mat-label>
+                <input matInput type="number" formControlName="pulse" required>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Megjegyzések</mat-label>
+                <textarea matInput formControlName="comment"></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button>Mégsem</button>
+        <button mat-raised-button color="primary" type="submit">Rögzítés</button>
+    </div>
+</form>
