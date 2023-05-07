@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MeassurementServiceService } from 'src/app/shared/services/meassurement-service.service';
+import { Meassure } from 'src/app/shared/models/Meassure';
 
 @Component({
   selector: 'app-bpmeasurement-add-edit',
@@ -9,7 +11,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class BpmeasurementAddEditComponent {
   bpmForm!: FormGroup;
 
-  constructor(private _fb: FormBuilder) {}
+  constructor(private _fb: FormBuilder, private meassurementService: MeassurementServiceService) {}
 
   ngOnInit() {
     this.bpmForm = this._fb.group({
@@ -22,12 +24,20 @@ export class BpmeasurementAddEditComponent {
     })
   }
 
-onFormSubmit() {
-  if(this.bpmForm.valid) {
-    console.log(this.bpmForm.value);
+  onFormSubmit() {
+    if(this.bpmForm.valid) {
+      const formData = this.bpmForm.value;
+      const meassureData: Meassure = {
+        date: formData.date.toISOString(),
+        potd: formData.potd,
+        systol: formData.systol,
+        diastol: formData.diastol,
+        pulse: formData.pulse,
+        comment: formData.comment
+      };
+      this.meassurementService.create(meassureData);
+    }
   }
-}
-
 
   potd: string[] = [ // parts of the day
     'Reggel',
