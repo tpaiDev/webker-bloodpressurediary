@@ -6,7 +6,7 @@
     <span class="example-spacer"></span>
 
 
-    <select #pageValue (change)="menuSwitch(pageValue.value)">
+    <select [(ngModel)]="currentPage" (change)="menuSwitch()">
       <option value="main">Main</option>
       <option value="about">About</option>
     </select>
