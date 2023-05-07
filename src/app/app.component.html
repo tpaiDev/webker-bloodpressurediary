@@ -1,5 +1,5 @@
 <app-menu (selectedPage)="changePage($event)"></app-menu>
-<ng-container [ngSwitch]="page">
+<!-- <ng-container [ngSwitch]="page">
   <ng-container *ngSwitchCase = "'main'">
     <div class="main-wrapper">
       <app-main></app-main>
@@ -20,10 +20,6 @@
   <ng-container *ngSwitchDefault>
       <h1>A keresett oldal nem található.</h1>
   </ng-container>
-</ng-container>
+</ng-container>-->
 
-
-
-
-
-<!-- <router-outlet></router-outlet> -->
+<router-outlet></router-outlet>
