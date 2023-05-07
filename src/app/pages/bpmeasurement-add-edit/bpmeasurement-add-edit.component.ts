@@ -13,7 +13,7 @@ export class BpmeasurementAddEditComponent {
 
   ngOnInit() {
     this.bpmForm = this._fb.group({
-      date: '',
+      date :'',
       potd: '',
       systol: '',
       diastol: '',

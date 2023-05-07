@@ -16,14 +16,20 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 
 
-import { BpmeasurementAddEditComponent } from './bpmeasurement-add-edit/bpmeasurement-add-edit.component';
+import { BpmeasurementAddEditComponent } from './pages/bpmeasurement-add-edit/bpmeasurement-add-edit.component';
+import { MainComponent } from './pages/main/main.component';
+import { AboutComponent } from './pages/about/about.component';
+import { MenuComponent } from './shared/menu/menu.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BpmeasurementAddEditComponent
+    BpmeasurementAddEditComponent,
+    MainComponent,
+    AboutComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

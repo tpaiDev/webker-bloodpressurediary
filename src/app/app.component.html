@@ -1,10 +1,29 @@
-<mat-toolbar color="primary">
-  <span>
-    <span class="material-symbols-outlined">ecg</span>
-    Vérnyomás monitorozó orvosi alkalmazás
-  </span>
-  <span class="example-spacer"></span>
-  <button mat-raised-button (click)="openAddEditMesurement()">
-    Új vérnyomás érték rögzítése
-  </button>
-</mat-toolbar>
+<app-menu (selectedPage)="changePage($event)"></app-menu>
+<ng-container [ngSwitch]="page">
+  <ng-container *ngSwitchCase = "'main'">
+    <div class="main-wrapper">
+      <app-main></app-main>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase = "'bp'">
+    <div class="main-wrapper">
+      <app-bpmeasurement-add-edit></app-bpmeasurement-add-edit>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase = "'about'">
+    <div class="main-wrapper">
+      <app-about></app-about>
+    </div>
+  </ng-container>
+  <ng-container *ngSwitchDefault>
+      <h1>A keresett oldal nem található.</h1>
+  </ng-container>
+</ng-container>
+
+
+
+
+
+<!-- <router-outlet></router-outlet> -->

@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+    <span>
+      <span class="material-symbols-outlined">ecg</span>
+      Vérnyomás monitorozó orvosi alkalmazás
+    </span>
+    <span class="example-spacer"></span>
+
+
+    <select #pageValue (change)="menuSwitch(pageValue.value)">
+      <option value="main">Main</option>
+      <option value="bp">BP</option>
+      <option value="about">About</option>
+    </select>
+
+
+    <span class="example-spacer"></span>
+
+    <button mat-raised-button (click)="openAddEditMesurement()">
+      Új vérnyomás érték rögzítése
+    </button>
+  </mat-toolbar>
