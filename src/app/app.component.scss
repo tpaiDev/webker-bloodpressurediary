@@ -1,3 +1,27 @@
 .main-wrapper {
     height: 100vh;
 }
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover, a:active {
+    color: lightgray;
+}
+
+.navigation-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+mat-sidenav {
+    width: 250px;
+}
+
+.addNewBP{
+    color: #ff5959;
+    cursor: pointer;
+}

@@ -1,20 +1,28 @@
-<mat-toolbar color="primary">
-    <span>
-      <span class="material-symbols-outlined">ecg</span>
-      Vérnyomás monitorozó orvosi alkalmazás
-    </span>
-    <span class="example-spacer"></span>
 
 
-    <select [(ngModel)]="currentPage" (change)="menuSwitch()">
-      <option value="main">Main</option>
-      <option value="about">About</option>
-    </select>
-
-
-    <span class="example-spacer"></span>
-
-    <button mat-raised-button (click)="openAddEditMesurement()">
-      Új vérnyomás érték rögzítése
-    </button>
-  </mat-toolbar>
+<mat-nav-list>
+<a mat-list-item routerLink="/main" (click)="close()" *ngIf="loggedInUser">
+    <mat-icon>grid_view</mat-icon>
+    <span> Kezdőlap</span>
+</a>
+<a mat-list-item routerLink="/login" (click)="close()" *ngIf="!loggedInUser">
+    <mat-icon>login</mat-icon>
+    <span> Bejelentkezés</span>
+</a>
+<a mat-list-item routerLink="/login" (click)="close(true)" *ngIf="loggedInUser">
+    <mat-icon>logout</mat-icon>
+    <span> Kijelentkezés</span>
+</a>
+  <a mat-list-item routerLink="/signup" (click)="close()" *ngIf="!loggedInUser">
+      <mat-icon>app_registration</mat-icon>
+      <span> Regisztráció</span>
+  </a>
+  <a mat-list-item (click)="close()" (click)="openAddEditMesurement()" *ngIf="loggedInUser">
+      <mat-icon class="addNewBP">add</mat-icon>
+      <span class="addNewBP">Új vérnyomás érték rögzítése</span>
+  </a>
+  <a mat-list-item routerLink="/about" (click)="close()">
+      <mat-icon>info</mat-icon>
+      <span> Rólam</span>
+  </a>
+</mat-nav-list>

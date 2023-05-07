@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "webker-bloodpressurediary": {
+      "hosting": {
+        "webker-bpdiary": [
+          "webker-bloodpressurediary"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "webker-bloodpressurediary"
+  }
+}
