@@ -1,4 +1,13 @@
-# WebkerBpdiary
+# Webfejlesztési keretrendszerek 2023
+## Vérnyomás monitorozó orvosi alkalmazás
+
+**Kedves Javító!**
+
+Amennyiben valamilyen kérdésed adódna a javítás során keress bátran az alábbi elérhetőségeken:
+- CooSpace: Tápai Dávid Zsolt
+- Discord: tapaidavid#9264
+- E-mail: tapai.david.zs@gmail.com
+- vagy akár facebookon is!
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.1.
 

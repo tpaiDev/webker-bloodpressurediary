@@ -5,6 +5,7 @@ import { filter } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { BpmeasurementAddEditComponent } from 'src/app/pages/bpmeasurement-add-edit/bpmeasurement-add-edit.component';
 import { AuthService } from './shared/services/auth.service';
+import { MeassurementServiceService } from './shared/services/meassurement-service.service';
 
 @Component({
   selector: 'app-root',
@@ -23,12 +24,13 @@ export class AppComponent implements OnInit {
     this.router = router;
   } */
 
-  constructor(private router: Router, private authService: AuthService, private  _dialog: MatDialog) {
+  constructor(private router: Router, private authService: AuthService, private  _dialog: MatDialog, private measureService: MeassurementServiceService) {
     // parameter adattagok
   }
 
 
   openAddEditMesurement() {
+    this.measureService.modify = false;
     this._dialog.open(BpmeasurementAddEditComponent);
   }
 

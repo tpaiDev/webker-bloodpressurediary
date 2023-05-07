@@ -1,5 +1,5 @@
 <div mat-dialog-title>
-    <h1><span class="material-symbols-outlined">medication</span> Új vérnyomás érték rögzítése</h1>
+    <h1><span class="material-symbols-outlined">medication</span> Új vérnyomás érték rögzítése/módosítása</h1>
 </div>
 <form [formGroup]="bpmForm" (ngSubmit)="onFormSubmit()">
     <div mat-dialog-content class="content">
@@ -44,6 +44,6 @@
     </div>
     <div mat-dialog-actions class="action">
         <button mat-raised-button>Mégsem</button>
-        <button mat-raised-button color="primary" type="submit">Rögzítés</button>
+        <button mat-raised-button color="primary" type="submit">Mentés</button>
     </div>
 </form>

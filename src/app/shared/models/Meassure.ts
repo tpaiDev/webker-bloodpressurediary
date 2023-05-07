@@ -1,4 +1,5 @@
 export class Meassure {
+    id?: string;
     date?: string;
     potd?: string;
     systol?: string;

@@ -9,18 +9,20 @@ import { Meassure } from 'src/app/shared/models/Meassure';
 export class MeassurementServiceService {
 
   collectionName :string =  "Meassure";
+  modify :boolean = false;
+  meassurementModify: Meassure = new Meassure;
 
   constructor(private afs: AngularFirestore) { }
 
   create(measure: Meassure) {
-    return this.afs.collection<Meassure>(this.collectionName).add(measure);
+    measure.id = this.afs.createId();
+    return this.afs.collection<Meassure>(this.collectionName).doc(measure.id).set(measure);
   }
   
   getAll(): Observable<Meassure[]> {
     return this.afs.collection<Meassure>(this.collectionName).valueChanges();
   }
-  
-  /*
+
   update(measure: Meassure) {
     return this.afs.collection<Meassure>(this.collectionName).doc(measure.id).update(measure);
   }
@@ -28,5 +30,6 @@ export class MeassurementServiceService {
   delete(measure: Meassure) {
     return this.afs.collection<Meassure>(this.collectionName).doc(measure.id).delete();
   }
-*/
+
+
 }

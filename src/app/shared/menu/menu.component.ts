@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, EventEmitter, Output, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BpmeasurementAddEditComponent } from 'src/app/pages/bpmeasurement-add-edit/bpmeasurement-add-edit.component';
+import { MeassurementServiceService } from '../services/meassurement-service.service';
 
 @Component({
   selector: 'app-menu',
@@ -15,9 +16,10 @@ export class MenuComponent implements OnInit, AfterViewInit {
   @Output() onCloseSidenav: EventEmitter<boolean> = new EventEmitter();
   @Output() onLogout: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(private  _dialog: MatDialog) {}
+  constructor(private  _dialog: MatDialog, private meassurementService: MeassurementServiceService) {}
 
   openAddEditMesurement() {
+    this.meassurementService.modify = false;
     this._dialog.open(BpmeasurementAddEditComponent);
   }
 

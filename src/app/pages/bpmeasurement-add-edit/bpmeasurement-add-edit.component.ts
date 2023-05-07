@@ -14,30 +14,54 @@ export class BpmeasurementAddEditComponent {
   constructor(private _fb: FormBuilder, private meassurementService: MeassurementServiceService) {}
 
   ngOnInit() {
-    this.bpmForm = this._fb.group({
-      date :'',
-      potd: '',
-      systol: '',
-      diastol: '',
-      pulse: '',
-      comment: '',
-    })
+    if(this.meassurementService.modify) {
+      this.bpmForm = this._fb.group({
+        date : this.meassurementService.meassurementModify.date,
+        potd: this.meassurementService.meassurementModify.potd,
+        systol: this.meassurementService.meassurementModify.systol,
+        diastol: this.meassurementService.meassurementModify.diastol,
+        pulse: this.meassurementService.meassurementModify.pulse,
+        comment: this.meassurementService.meassurementModify.comment,
+      })
+    }else{
+      this.bpmForm = this._fb.group({
+        date :'',
+        potd: '',
+        systol: '',
+        diastol: '',
+        pulse: '',
+        comment: '',
+      })
+    }
   }
 
   onFormSubmit() {
     if(this.bpmForm.valid) {
       const formData = this.bpmForm.value;
-      const meassureData: Meassure = {
-        date: formData.date.toISOString(),
+      let dateObj: Date;
+      if (typeof formData.date === 'string') {
+        dateObj = new Date(formData.date);
+      } else {
+        dateObj = formData.date;
+      }
+      const measureData: Meassure = {
+        date: dateObj.toISOString(),
         potd: formData.potd,
         systol: formData.systol,
         diastol: formData.diastol,
         pulse: formData.pulse,
         comment: formData.comment
       };
-      this.meassurementService.create(meassureData);
+      if(this.meassurementService.modify) {
+        measureData.date = formData.date;
+        measureData.id = this.meassurementService.meassurementModify.id;
+        this.meassurementService.update(measureData);
+      } else {
+        this.meassurementService.create(measureData);
+      }
     }
   }
+  
 
   potd: string[] = [ // parts of the day
     'Reggel',
